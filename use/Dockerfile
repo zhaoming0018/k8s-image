@@ -1,5 +1,8 @@
-FROM registry.cn-hangzhou.aliyuncs.com/tensorflow_yiming/tensorfuzz
-RUN cd ~ && git clone https://github.com/csong27/ml-model-remember.git && apt update && apt install -y bzip2
+FROM ubuntu
+RUN apt update && apt install -y bzip2 && cd ~ && git clone https://github.com/csong27/ml-model-remember.git
 RUN cd ~ && wget https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-x86_64.sh && sh Miniconda2-latest-Linux-x86_64.sh -b
-RUN echo "export PATH=\$PATH:/root/miniconda2/bin" >> /root/.bashrc && cd ~ && source ~/.bashrc && source activate && pip install theano==0.9.0 -i https://pypi.tuna.tsinghua.edu.cn/simple/ && pip install cython -i https://pypi.tuna.tsinghua.edu.cn/simple/ && \ 
+RUN bash && echo "export PATH=\$PATH:/root/miniconda2/bin" >> /root/.bashrc \
+    && cd ~ && source ~/.bashrc && source activate \ 
+    && pip install theano==0.9.0 -i https://pypi.tuna.tsinghua.edu.cn/simple/ \ 
+    && pip install cython -i https://pypi.tuna.tsinghua.edu.cn/simple/ && \ 
     pip uninstall lasagna && git clone https://github.com/Lasagne/Lasagne.git && cd Lasagne && python setup.py install
