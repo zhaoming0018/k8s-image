@@ -4,5 +4,5 @@ RUN cd ~ && wget https://repo.anaconda.com/miniconda/Miniconda2-latest-Linux-x86
 RUN echo "export PATH=\$PATH:/root/miniconda2/bin" >> /root/.bashrc \
     && /root/miniconda2/bin/pip install theano==0.9.0 -i https://pypi.tuna.tsinghua.edu.cn/simple/ \ 
     && /root/miniconda2/bin/pip install cython -i https://pypi.tuna.tsinghua.edu.cn/simple/ && \ 
-    /root/miniconda2/bin/pip uninstall lasagna && git clone https://github.com/Lasagne/Lasagne.git \
+    /root/miniconda2/bin/pip uninstall lasagna &&  git clone https://github.com/Lasagne/Lasagne.git /root/Lasagne/ \
     && cd /root/Lasagne && /root/miniconda2/bin/python setup.py install
